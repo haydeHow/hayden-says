@@ -6,6 +6,7 @@
 #include "fuck_wav.h"
 #include "dammit_wav.h"
 #include "shit_wav.h"
+#include "cunt_wav.h"
 
 // Reset
 #define RESET_COLOR "\033[0m"
@@ -37,6 +38,7 @@ int print_help()
     PRINT_OPTION("\tfuck\n");
     PRINT_OPTION("\tshit\n");
     PRINT_OPTION("\tdammit\n");
+    PRINT_OPTION("\tcunt\n");
 
     PRINT_BOLD("EXAMPLE:\n")
     PRINT_EXAMPLE("\thayde@haydes-MacBook-Air ~ ");
@@ -51,49 +53,6 @@ int print_help()
     // Add your own options here
     return 0;
 }
-
-/*
-
-void play_fuck()
-{
-    system("afplay fuck.wav");
-}
-void play_shit()
-{
-    system("afplay shit.wav");
-}
-void play_dammit()
-{
-    system("afplay dammit.wav");
-}
-
-
-int main(int argc, char *argv[])
-{
-    if (argc == 1)
-    {
-        print_help();
-        return 0;
-    }
-    if ((argc == 2) && (strcmp(argv[1], "fuck") == 0))
-    {
-        play_fuck();
-        return 0;
-    }
-    if ((argc == 2) && (strcmp(argv[1], "dammit") == 0))
-    {
-        play_dammit();
-        return 0;
-    }
-    if ((argc == 2) && (strcmp(argv[1], "shit") == 0))
-    {
-        play_shit();
-        return 0;
-    }
-
-    return 0;
-}
-*/
 
 void play_fuck()
 {
@@ -125,6 +84,16 @@ void play_shit()
     system("afplay /tmp/shit.wav");
     remove("/tmp/shit.wav");
 }
+void play_cunt()
+{
+    // Write to a temp file
+    FILE *fp = fopen("/tmp/cunt.wav", "wb");
+    fwrite(cunt_wav, 1, cunt_wav_len, fp);
+    fclose(fp);
+
+    system("afplay /tmp/cunt.wav");
+    remove("/tmp/cunt.wav");
+}
 
 int main(int argc, char *argv[])
 {
@@ -146,6 +115,11 @@ int main(int argc, char *argv[])
     if ((argc == 2) && (strcmp(argv[1], "shit") == 0))
     {
         play_shit();
+        return 0;
+    }
+    if ((argc == 2) && (strcmp(argv[1], "cunt") == 0))
+    {
+        play_cunt();
         return 0;
     }
 
