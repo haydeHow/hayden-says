@@ -2,7 +2,7 @@ import sounddevice as sd
 import scipy.io.wavfile as wav
 import numpy as np
 
-def record_voice(filename='my_recording.wav', duration=1, samplerate=44100):
+def record_voice(filename='my_recording.wav', duration=2, samplerate=44100):
     print(f"Recording for {duration} seconds...")
 
     # Start recording from mic

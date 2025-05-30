@@ -7,6 +7,9 @@
 #include "dammit_wav.h"
 #include "shit_wav.h"
 #include "cunt_wav.h"
+#include "baby_wav.h"
+#include "i_love_you_wav.h"
+#include "touch_asshole_wav.h"
 
 // Reset
 #define RESET_COLOR "\033[0m"
@@ -39,6 +42,9 @@ int print_help()
     PRINT_OPTION("\tshit\n");
     PRINT_OPTION("\tdammit\n");
     PRINT_OPTION("\tcunt\n");
+    PRINT_OPTION("\tbaby\n");
+    PRINT_OPTION("\tlove-you\n");
+    PRINT_OPTION("\ttouch-asshole\n");
 
     PRINT_BOLD("EXAMPLE:\n")
     PRINT_EXAMPLE("\thayde@haydes-MacBook-Air ~ ");
@@ -94,7 +100,36 @@ void play_cunt()
     system("afplay /tmp/cunt.wav");
     remove("/tmp/cunt.wav");
 }
+void play_baby()
+{
+    // Write to a temp file
+    FILE *fp = fopen("/tmp/baby.wav", "wb");
+    fwrite(baby_wav, 1, baby_wav_len, fp);
+    fclose(fp);
 
+    system("afplay /tmp/baby.wav");
+    remove("/tmp/baby.wav");
+}
+void play_love_you()
+{
+    // Write to a temp file
+    FILE *fp = fopen("/tmp/love_you.wav", "wb");
+    fwrite(i_love_you_wav, 1, i_love_you_wav_len, fp);
+    fclose(fp);
+
+    system("afplay /tmp/love_you.wav");
+    remove("/tmp/love_you.wav");
+}
+void play_touch_asshole()
+{
+    // Write to a temp file
+    FILE *fp = fopen("/tmp/touch_asshole.wav", "wb");
+    fwrite(touch_asshole_wav, 1, touch_asshole_wav_len, fp);
+    fclose(fp);
+
+    system("afplay /tmp/touch_asshole.wav");
+    remove("/tmp/touch_asshole.wav");
+}
 int main(int argc, char *argv[])
 {
     if (argc == 1)
@@ -120,6 +155,21 @@ int main(int argc, char *argv[])
     if ((argc == 2) && (strcmp(argv[1], "cunt") == 0))
     {
         play_cunt();
+        return 0;
+    }
+    if ((argc == 2) && (strcmp(argv[1], "baby") == 0))
+    {
+        play_baby();
+        return 0;
+    }
+    if ((argc == 2) && (strcmp(argv[1], "love-you") == 0))
+    {
+        play_love_you();
+        return 0;
+    }
+    if ((argc == 2) && (strcmp(argv[1], "touch-asshole") == 0))
+    {
+        play_touch_asshole();
         return 0;
     }
 
